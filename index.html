@@ -198,7 +198,7 @@
                 </div>
                 
             </div>
-            <div id="sidebar-wrapper" onscroll="doScroll">
+            <div id="sidebar-wrapper">
             </div>
         </div>
 
@@ -294,7 +294,7 @@
                                 },
                             pips: {
                                 mode: 'positions',
-                                values: [5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95],
+                                values: [5,15,25,35,45,55,65,75,85,95],
                                 density: 1,
                                 format: wNumb({
                                         decimals: 0,
@@ -335,7 +335,7 @@
                     if (typeof time === 'string') {
                         time = parseFloat(time);
                     }
-                    time += .005;
+                    time += .05;
                     if (time > hours.length) {
                         time = 0;
                     }
@@ -395,9 +395,6 @@
                         }
                         window.waypoints = waypoints;
                     })
-            }
-            function doScroll() {
-                console.log('scroll');
             }
         </script>
 
