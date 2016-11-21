@@ -162,3 +162,18 @@ that I may see Saint Peter’s Gate, and those
 whom thou describest as so whelmed with woe.”
 
 He then moved on, and I behind him kept.
+
+**Buendia and Sergio Osmena Highway**
+<div class="marker" lat="14.55776" lng="121.00804" zoom="17” duration="10."></div>
+
+**EDSA by Makati area, below Pasig River**
+<div class="marker" lat="14.5613" lng="121.0408" zoom="16” duration="10."></div>
+
+**EDSA Mandaluyong area**
+<div class="marker" lat="14.5797" lng="121.0531" zoom="16” duration="10."></div>
+
+**EDSA Greenhills area**
+<div class="marker" lat="14.5928" lng="121.0598" zoom="16” duration="10."></div>
+
+**EDSA and Aurora Blvd Quezon City area**
+<div class="marker" lat="14.6223" lng="121.0517" zoom="16” duration="10."></div>
