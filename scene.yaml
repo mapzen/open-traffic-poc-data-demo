@@ -86,7 +86,7 @@ styles:
                     color.rgb = mix(vec3(.5),color.rgb,pow(speed_delta,.2)*2.*(1.-f_now));
 
                     vec2 st = v_texcoord.xy+vec2(.5,0.);
-                    //st.y -= u_time*5.*speed_now;
-                    st.y -= u_time*u_meters_per_pixel*((speed_now)*100.);
+                    st.y -= u_time*10.*speed_now;
+                    //st.y -= u_time*u_meters_per_pixel*((speed_now)*100.);
                     
                     color.a *= aastep(zoom(),fract(st.y+abs(st.x*.5-.5)));
