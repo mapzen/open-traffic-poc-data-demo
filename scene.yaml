@@ -70,23 +70,23 @@ styles:
                     float now = u_offset;
                     float i_now = floor(now);
                     float f_now = fract(now);
-                    float prev = i_now-1.;
-                    float next = i_now+1.;
 
-                    float speed_prev = getColor(getUV(id,prev)).r;
+                    float speed_prev = getColor(getUV(id,i_now-1.)).r;
                     float speed_now = getColor(getUV(id,i_now)).r;
-                    float speed_next = getColor(getUV(id,next)).r;
+                    float speed_next = getColor(getUV(id,i_now+1.)).r;
                     
                     float speed_prev_interpolated = mix(speed_prev, speed_now, f_now);
                     float speed_now_interpolated = mix(speed_now, speed_next, f_now);
-                    float speed_delta = speed_now_interpolated - speed_prev_interpolated;
+                    //float speed_delta = speed_now_interpolated - speed_prev_interpolated;
+                    float speed_delta = speed_now_interpolated - speed_prev;
 
                     //color.rgb = mix(vec3(1.000,0.068,0.378),vec3(0.000,1.000,0.818),smoothstep(0.,.3,speed_now_interpolated));
                     color.rgb = mix(vec3(1.000,0.068,0.378),vec3(0.000,1.000,0.818),.5+speed_delta*.5);
-                    color.rgb = mix(vec3(.5),color.rgb,pow(speed_delta,.02)*2.);
+                    //color.rgb = mix(vec3(1.000,0.0,0.),vec3(0.000,1.000,0.0),.5+speed_delta*.5);
+                    color.rgb = mix(vec3(.5),color.rgb,pow(speed_delta,.2)*2.*(1.-f_now));
 
                     vec2 st = v_texcoord.xy+vec2(.5,0.);
-                    st.y -= u_time*5.*speed_now;
-
+                    //st.y -= u_time*5.*speed_now;
+                    st.y -= u_time*u_meters_per_pixel*((speed_now)*100.);
                     
                     color.a *= aastep(zoom(),fract(st.y+abs(st.x*.5-.5)));
