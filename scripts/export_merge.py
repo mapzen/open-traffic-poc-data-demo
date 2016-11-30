@@ -23,15 +23,15 @@ def remove_duplicates(l):
 def find_average(_dict):
     total = 0
     samples = 0 
-    for key, value in _dict.iteritems():
-        total += float(value)
+    for key, values in _dict.iteritems():
+        total += values[0]
         samples += 1
     return total/samples
 
 # Gather time/geom data from the CSV file
 time_indices = []
 geom_indices = []
-speeds = dict()
+samples = dict()
 with open(IN_CSV, 'rb') as csv_file:
     reader = csv.reader(csv_file)
     # skip header
@@ -41,9 +41,9 @@ with open(IN_CSV, 'rb') as csv_file:
         geom_indices.append(geom_id)
         time_id = int(row[1]);
         time_indices.append(time_id)
-        if not geom_id in speeds:
-            speeds[geom_id] = {}
-        speeds[geom_id][str(time_id)] = row[2]
+        if not geom_id in samples:
+            samples[geom_id] = {}
+        samples[geom_id][str(time_id)] = [float(row[2]),int(float(row[3]))]
 
 # Housekeep the indices list
 print "pre clean:",len(time_indices),'(time_indices),',len(geom_indices),'(geom_indices)'
@@ -77,24 +77,24 @@ with open(IN_GEOJSON,'rb') as in_geojson_file:
             x_offset = int(id_counter/OUT_IMAGE_HEIGHT)
 
             features.append(geojson.Feature(geometry=feature.geometry, id=id_counter, properties={'id':id_counter}))
-            last_value = -1
+            last_speed = -1
             time_samples = len(time_indices)
             for time_index in range(time_samples):
                 x = x_offset*time_samples+time_index
                 time_id = str(time_indices[time_index])
-                
-                if time_id in speeds[geom_id]:
-                    last_value = float(speeds[geom_id][time_id])
+                total_samples = 0
 
-                if last_value == -1:
-                    last_value = find_average(speeds[geom_id])
+                if time_id in samples[geom_id]:
+                    last_speed = samples[geom_id][time_id][0]
+                    total_samples = samples[geom_id][time_id][1]
 
-                pixels[x,y] = (int(last_value*2.),0,0,255)
+                if last_speed == -1:
+                    last_speed = find_average(samples[geom_id])
+
+                pixels[x,y] = (int(last_speed*1.5),total_samples,0,255)
             id_counter += 1
 
 out_image.save(OUT_IMAGE)
 out_geojson = open(OUT_GEOJSON, 'w')
 out_geojson.write(geojson.dumps(geojson.FeatureCollection(features), sort_keys=True))
 out_geojson.close()
-
-

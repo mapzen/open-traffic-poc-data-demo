@@ -6,10 +6,13 @@ from dateutil.relativedelta import relativedelta
 
 # Global variables
 DATA_FOLDER = '../data'
-EXTRACT_NAME = 'opentraffic_export_2016-11-17T20-26-26GMT' #'opentraffic_export_2016-11-14T17-13-18GMT'
+# EXTRACT_NAME = 'opentraffic_export_2016-11-17T20-26-26GMT' # Average_Monday
+# EXTRACT_NAME = 'opentraffic_export_2016-11-30T02-23-51GMT' # Control_Friday
+EXTRACT_NAME = 'opentraffic_export_2016-11-30T02-20-20GMT' # Carmagedon_Friday
+# EXTRACT_NAME = 'opentraffic_export_2016-11-30T02-33-55GMT' # Control_Friday vs Carmagedon_Friday
 IN_CSV = DATA_FOLDER+'/'+EXTRACT_NAME+'/'+EXTRACT_NAME+'.csv'
 OUT_FORMAT =  DATA_FOLDER+'/opentraffic-%03d.csv'
-SAMPLES_PER_FILE = 1076473
+SAMPLES_PER_FILE = 1701147
 header = "Edge_Id,Timestamp,Average_Speed_KPH\n"
 
 # Clean previus records
@@ -23,6 +26,7 @@ file_counter = 0
 sampler_counter = 0
 min_speed = 1000
 max_speed = 0
+max_samples = 0
 with open(IN_CSV, 'rb') as csv_file:
     reader = csv.reader(csv_file)
     # skip header
@@ -57,10 +61,15 @@ with open(IN_CSV, 'rb') as csv_file:
             elif speed < min_speed:
                 min_speed = speed
 
+            samples = float(row[13])
+            if samples > max_samples:
+                max_samples = samples
+
             # add row to file
-            file.write(row[0]+','+timestamp.strftime("%Y%m%d%H")+','+row[12]+'\n')
+            file.write(row[0]+','+timestamp.strftime("%Y%m%d%H")+','+row[12]+','+row[13]+'\n')
         sampler_counter += 1
 file.close()
 
-print sampler_counter,"samples"
+print sampler_counter,"total samples"
+print max_samples,"max sources for samples"
 print "The range of speed goes from ", min_speed, 'to', max_speed
