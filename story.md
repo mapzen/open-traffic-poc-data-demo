@@ -1,33 +1,770 @@
-When half way through the journey of our life
-I found that I was in a gloomy wood,
-because the path which led aright was lost.
-And ah, how hard it is to say just what
-this wild and rough and stubborn woodland was,
-the very thought of which renews my fear!
-So bitter ’t is, that death is little worse;
-but of the good to treat which there I found,
-I ’ll speak of what I else discovered there.
+&#8232;
 
-I cannot well say how I entered it,
-so full of slumber was I at the moment
-when I forsook the pathway of the truth;
-but after I had reached a mountain’s foot,
-where that vale ended which had pierced my heart
-with fear, I looked on high,
-and saw its shoulders
-mantled already with that planet’s rays
-which leadeth one aright o’er every path.
+&#8232;
 
-Then quieted a little was the fear,
-which in the lake-depths of my heart had lasted
-throughout the night I passed so piteously.
+&#8232;
 
-And even as he who, from the deep emerged
-with sorely troubled breath upon the shore,
-turns round, and gazes at the dangerous water;
-even so my mind, which still was fleeing on,
-turned back to look again upon the pass
-which ne’er permitted any one to live.
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+## A regular Friday on Manila
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+** 6:30am **
+<div class="marker" lat="14.586328775422647" lng="121.20660407314469" zoom="11" duration="5."></div>
+<div class="marker" hour="6.5" ></div>
+
+The day start calm and quiet
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+Looking closer...
+<div class="marker" lat="14.562394578900783" lng="121.06284048741793" zoom="13.752914428710936" duration="10."></div>
+... we can see the highways flowing normally with early commuters
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+By 8:30 the streets are getting bussy with some ocational traffic 
+<div class="marker" hour="6.5" ></div>
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+here 
+<div class="marker" lat="14.55999493585459" lng="121.04567228887086" zoom="15.743270874023438" duration="5."></div>
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+and there
+
+<div class="marker" lat="14.539711331599989" lng="121.01933768473184" zoom="17" duration="5."></div>
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+Then we see the normal traffic of a week day
+<div class="marker" hour="10" ></div>
+<div class="marker" lat="14.560297256734478" lng="121.04006628064357" zoom="13" duration="5."></div>
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+** 12pm **
+<div class="marker" hour="12" ></div>
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+** 1pm **
+<div class="marker" hour="13" ></div>
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+** 2pm **
+<div class="marker" hour="14" ></div>
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+** 3pm **
+<div class="marker" hour="15" ></div>
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+** 4pm **
+<div class="marker" hour="16" ></div>
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+** 5pm **
+<div class="marker" hour="17" ></div>
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+** 6pm **
+<div class="marker" hour="18" ></div>
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+** 7pm **
+<div class="marker" hour="19" ></div>
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+By ** 8pm ** we see the heavy traffic of friday rush hour
+<div class="marker" hour="20" ></div>
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+This main highway is jammed from here
+<div class="marker" lat="14.541303121745106" lng="121.01996328713534" zoom="16" duration="5."></div>
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+<div class="marker" lat="14.552122738570144" lng="121.03328673519708" zoom="17" duration="5."></div>
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+<div class="marker" lat="14.564827719768902" lng="121.04480201496247" zoom="18" duration="5."></div>
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+&#8232;
+
+Imagine the painfull ride
+
+<div class="marker" lat="14.56761520587081" lng="121.04611630226746" zoom="20" duration="5."></div>
+
+When I had somewhat eased my weary body,
+o’er the lone slope I so resumed my way,
+that e’er the lower was my steady foot.
+Then lo, not far from where the ascent began,
+a Leopard which, exceeding light and swift,
+was covered over with a spotted hide,
+and from my presence did not move away;
+nay, rather, she so hindered my advance,
+that more than once I turned me to go back.
+
+** 1pm **
+<div class="marker" hour="13" ></div>
+
+When I had somewhat eased my weary body,
+o’er the lone slope I so resumed my way,
+that e’er the lower was my steady foot.
+Then lo, not far from where the ascent began,
+a Leopard which, exceeding light and swift,
+was covered over with a spotted hide,
+and from my presence did not move away;
+nay, rather, she so hindered my advance,
+that more than once I turned me to go back.
+
+** 10pm **
+<div class="marker" hour="10" ></div>
 
 When I had somewhat eased my weary body,
 o’er the lone slope I so resumed my way,
@@ -74,6 +811,9 @@ weeps and is saddened in his every thought;
 such did that peaceless animal make me,
 which, ’gainst me coming, pushed me, step by step,
 back to the place where silent is the sun.
+
+** 7am **
+<div class="marker" hour="7" ></div>
 
 While toward the lowland I was falling fast,
 the sight of one was offered to mine eyes,

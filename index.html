@@ -176,6 +176,10 @@
                 padding: 10px;
             }
 
+            .noUi-state-tap {
+                transition-duration: 10s;
+            }
+
 /*            #story {
                 font-size: 14px; 
                 font-weight: 200;
@@ -285,7 +289,7 @@
                         // var dataLabel = document.getElementById('date');
 
                         var slider = noUiSlider.create(timeSlider, {
-                            animate: false,
+                            animate: true,
                             start: 0,
                             step: 0.04,
                             range: {
@@ -294,7 +298,9 @@
                                 },
                             pips: {
                                 mode: 'positions',
-                                values: [5,15,25,35,45,55,65,75,85,95],
+                                values: [1.443333333*3, 1.443333333*9, 1.443333333*15, 1.443333333*21, 1.443333333*27,
+                                        1.443333333*33, 1.443333333*39, 1.443333333*45, 1.443333333*51, 1.443333333*57,
+                                        1.443333333*63],
                                 density: 1,
                                 format: wNumb({
                                         decimals: 0,
@@ -327,23 +333,6 @@
                     scene.styles.opentraffic.shaders.uniforms.u_param = [this.width,this.height];
                 };
                 downloadingImage.src = 'data/opentraffic.png'
-                window.requestAnimationFrame(update);
-            }
-
-            function update() {
-                if (!pause) {
-                    if (typeof time === 'string') {
-                        time = parseFloat(time);
-                    }
-                    time += .01;
-                    if (time > hours.length) {
-                        time = 0;
-                    }
-                    if (window.timeSlider) {
-                        window.timeSlider.noUiSlider.set(time);
-                    }
-                }
-                window.requestAnimationFrame(update);
             }
 
             function formatTime(values, showDate) {
@@ -376,18 +365,24 @@
                                                             element: markers[i],
                                                             handler: function(direction) {
                                                                 console.log(direction,this.element);
-                                                                var options = { animate: true, duration: 1., easeLinearity: 1};
-                                                                if (this.element.hasAttribute('duration')) {
-                                                                    options.duration = parseFloat(this.element.getAttribute('duration'));
-                                                                    console.log(options);
-                                                                }
+
                                                                 if (this.element.hasAttribute('lat')&&
                                                                     this.element.hasAttribute('lng')&&
                                                                     this.element.hasAttribute('zoom')) {
+                                                                    var options = { animate: true, duration: 1., easeLinearity: 1};
+
+                                                                    if (this.element.hasAttribute('duration')) {
+                                                                        options.duration = parseFloat(this.element.getAttribute('duration'));
+                                                                        //console.log(options);
+                                                                    }
                                                                     var lat = parseFloat(this.element.getAttribute('lat'));
                                                                     var lng = parseFloat(this.element.getAttribute('lng'));
                                                                     var zoom = parseFloat(this.element.getAttribute('zoom'));
                                                                     map.flyTo({lon: lng, lat: lat},zoom,options);
+                                                                }
+                                                                if (window.timeSlider && window.timeSlider.noUiSlider && this.element.hasAttribute('hour')) {
+                                                                    var hour = (parseFloat(this.element.getAttribute('hour')) - 1 )% 24;
+                                                                    window.timeSlider.noUiSlider.set(hour)
                                                                 }
                                                             },
                                                             offset: '50%'

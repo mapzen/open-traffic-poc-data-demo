@@ -1,11 +1,19 @@
 #!/usr/bin/env python
 
-import csv, geojson
+import os
+import csv
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
+import geojson
 from PIL import Image
 
-DATA_FOLDER = '../data'
-# Digested CSV made using export_csv_digest.py
-IN_CSV = DATA_FOLDER+'/opentraffic-000.csv'
+EXTRACT_NAME = 'opentraffic_export_2016-11-30T02-33-55GMT' # Control_Friday vs Carmagedon_Friday
+
+# Global variables
+DATA_FOLDER = '../data/'+EXTRACT_NAME
+IN_CSV = DATA_FOLDER+'/'+EXTRACT_NAME+'.csv'
+IN_SHPFILE = DATA_FOLDER+'/opentraffic_route.shp'
+
 # Takes a GeoJSON generated from the Shapefile (ogr2ogr -f GeoJSON opentraffic_route.geojson opentraffic_route.shp)
 IN_GEOJSON = DATA_FOLDER+'/opentraffic_route.geojson'
 # This files will be merged in a GeoJSON file containing the geometry
@@ -28,22 +36,66 @@ def find_average(_dict):
         samples += 1
     return total/samples
 
-# Gather time/geom data from the CSV file
-time_indices = []
-geom_indices = []
+# Clean previus records
+os.system('rm -rf '+IN_GEOJSON)
+
+# Transform ShapeFile into GeoJSON
+os.system('ogr2ogr -f GeoJSON '+IN_GEOJSON+' '+IN_SHPFILE)
+
+# DATABASE to store samples on
 samples = dict()
+# indeces (geometries and times) 
+geom_indices = []
+time_indices = []
+
+min_speed = 1000
+max_speed = 0
+max_observations = 0
+
+# Edge Id,Date Start (Baseline),Date End (Baseline),Date Start (Comparison),Date End (Comparison),Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday,Time Start,Time End,Percent Change,Confidence Interval,Alpha,T-Score,Degrees of Freedom,Margin of Error,Normalized by Time,Average Speed KPH (Baseline),Number of Observations (Baseline),Standard Deviation (Baseline),Standard Error (Baseline),99% Upper Bound (Baseline),99% Lower Bound (Baseline),97% Upper Bound (Baseline),97% Lower Bound (Baseline),95% Upper Bound (Baseline),95% Lower Bound (Baseline),90% Upper Bound (Baseline),90% Lower Bound (Baseline),Average Speed (Comparison),Number of Observations (Comparison),Standard Deviation (Comparison),Standard Error (Comparison),99% Upper Bound (Comparison),99% Lower Bound (Comparison),97% Upper Bound (Comparison),97% Lower Bound (Comparison),95% Upper Bound (Comparison),95% Lower Bound (Comparison),90% Upper Bound (Comparison),90% Lower Bound (Comparison)
 with open(IN_CSV, 'rb') as csv_file:
     reader = csv.reader(csv_file)
     # skip header
     next(reader, None)
+    file = None
     for row in reader:
+        # Extract and Index Geometry ID
         geom_id = row[0]
         geom_indices.append(geom_id)
-        time_id = int(row[1]);
+
+        # Extract time by calculating the timestamp from the "Date Start" ...
+        time = row[10].split(':')
+        if len(time[0]) == 3:
+            time[0] = time[0][1:]
+        timestamp = datetime.strptime(row[1]+' '+str(1+int(time[0]))+':'+str(1+int(time[1])),'%m/%d/%Y %H:%M')
+        # Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday
+        time_offset = 0*int(row[3]) + 1*int(row[4]) + 2*int(row[5]) + 3*int(row[6]) + 4*int(row[7]) + 5*int(row[8]) + 6*int(row[9])
+        timestamp = timestamp + relativedelta(days=time_offset)
+        # Indexing the time stamp
+        time_id = int(timestamp.strftime("%Y%m%d%H"));
         time_indices.append(time_id)
+
+        # Extract Speed number
+        speed = float(row[12])
+        if speed > max_speed:
+            max_speed = speed
+        elif speed < min_speed:
+            min_speed = speed
+
+        # Extract Observation number
+        observations = int(float(row[13]))
+        if observations > max_observations:
+            max_observations = observations
+
+        # Add to DATABASE of SAMPLES
         if not geom_id in samples:
             samples[geom_id] = {}
-        samples[geom_id][str(time_id)] = [float(row[2]),int(float(row[3]))]
+        samples[geom_id][str(time_id)] = [speed,observations]
+
+# Report
+print len(samples),"total samples"
+print max_observations,"max sources for samples"
+print "The range of speed goes from ", min_speed, 'to', max_speed
 
 # Housekeep the indices list
 print "pre clean:",len(time_indices),'(time_indices),',len(geom_indices),'(geom_indices)'
@@ -63,7 +115,7 @@ width = len(time_indices)*int(len(geom_indices)/OUT_IMAGE_HEIGHT+1)
 out_image = Image.new('RGBA',(width,height),'black')
 pixels = out_image.load()
 
-print "Image will be:",width,height
+print "An image of ",width,'x',height,'will be generated to contain the speed and observations samples at',OUT_IMAGE
 
 # the ID of a GeoJson with the geometry
 features = []
@@ -95,6 +147,8 @@ with open(IN_GEOJSON,'rb') as in_geojson_file:
             id_counter += 1
 
 out_image.save(OUT_IMAGE)
+
+print 'A .json file containing the geometry for the samples data will be generated at', OUT_GEOJSON
 out_geojson = open(OUT_GEOJSON, 'w')
 out_geojson.write(geojson.dumps(geojson.FeatureCollection(features), sort_keys=True))
 out_geojson.close()
