@@ -179,6 +179,12 @@
             .noUi-state-tap {
                 transition-duration: 10s;
             }
+/*
+            .noUi-state-tap .noUi-connect,
+            .noUi-state-tap .noUi-origin {
+                -webkit-transition: top 0.5s, right 0.5s, bottom 0.5s, left 0.5s;
+                transition: top 0.5s, right 0.5s, bottom 0.5s, left 0.5s;
+            }*/
 
 /*            #story {
                 font-size: 14px; 
@@ -290,6 +296,7 @@
 
                         var slider = noUiSlider.create(timeSlider, {
                             animate: true,
+                            // animationDuration: 30000,
                             start: 0,
                             step: 0.04,
                             range: {

@@ -82,11 +82,11 @@ styles:
 
                     color.rgb = mix(vec3(1.000,0.068,0.378), vec3(0.000,1.000,0.818), smoothstep(0.,.3,data_now_interpolated.r) );
                     color.rgb = mix(vec3(0.5),color.rgb,.1+pow(data_now_interpolated.g*5.,0.2));
+                    //color.rgb = mix(vec3(0.5),color.rgb, data_now_interpolated.g*10.);
 
                     vec2 st = v_texcoord.xy+vec2(.5,0.);
                     st.y -= u_time*10.*data_now.r;
 
                     float p = floor(st.y);
                     p = step(.1+data_now_interpolated.g*.9, (random(p*.000001)+random(p))*.5 );
-                    
-                    color.a *= aastep(zoom(),fract(st.y+abs(st.x*.5-.5)))*(1.-p) ;
+                    color.a *= aastep(zoom(),fract(st.y+abs(st.x*.5-.5))) * (1.-p);
