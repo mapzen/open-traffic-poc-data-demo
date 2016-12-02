@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-        <title>OpenTraffic Demo</title>
+        <title>A day on the roads of Manila, as captured from thousands of rideshare trips by Open Traffic and Mapzen Tangram</title>
         <!-- 3rd party libraries -->
             <!-- Leaflet -->
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.1/leaflet.css" />
@@ -63,9 +63,10 @@
                 position: absolute;
                 z-index: 10000;
                 right: 0px;
+                top: 80px;
                 border-radius: 0px;
                 color: black;
-                background-color: rgba(255,255,255,.85);
+                background-color: rgba(255,255,255,1.0);
                 border-color: white;
                 border-width: 0px
             }
@@ -74,16 +75,17 @@
                 z-index: 1000;
                 position: absolute;
                 right: -500px;
+                top: 80px;
+                bottom: 120px;
                 width: 500px;
-                height: auto;
-                margin-rigth: -500px;
                 /*overflow-y: auto;*/
-                background: rgba(255,255,255,.85);
+                background: rgba(255,255,255,1.0);
                 -webkit-transition: all 0.5s ease;
                 -moz-transition: all 0.5s ease;
                 -o-transition: all 0.5s ease;
                 transition: all 0.5s ease;
                 padding: 10px;
+                overflow-y: auto;
             }
 
             #wrapper.toggled #sidebar-wrapper {
@@ -97,6 +99,12 @@
                 -moz-transition: all 0.5s ease;
                 -o-transition: all 0.5s ease;
                 transition: all 0.5s ease;
+            }
+
+            #sidebar-wrapper img {
+                max-width: 100%;
+                height: auto;
+                border: solid 2px rgb(102,102,102);
             }
 
             #page-content-wrapper {
@@ -413,8 +421,8 @@
         <script>
             MPZN.bug({
                 name: 'Tangram',
-                tweet: 'OpenTraffic demo',
-                repo: 'https://github.com/tangrams/tangram/',
+                tweet: "A day on the roads of Manila, as captured from thousands of rideshare trips by Open Traffic and Mapzen Tangram",
+                repo: 'https://github.com/mapzen/open-traffic-poc-data-demo',
                 search: false,
                 locate: false
             });
