@@ -1,7 +1,5 @@
 <h1>A day on the roads of Manila</h1>
 
-<div class="marker" lat="14.5985" lng="120.9951" zoom="14"></div>
-
 Mapzen, the World Bank, Grab, Conveyal, and [more partners](#credits) have teamed up to help Manila and other major cities around the world understand and improve their transportation challenges. Together we're creating Open Traffic, a data platform to map flows of movement through cities. Into the platform go anonymous data from rideshare vehicles and smartphones, out of the platform comes maps like this.
 
 This is traffic in Manila on Friday, August 5, 2015. Drag the slider to advance through the day. Pan and zoom the map to explore the city. Traffic is light on <span style="color: #22dfc2; font-weight: bold;">teal roadways</span>; it's sluggish on <span style="color: #b25476; font-weight: bold;">maroon roadways</span>.
@@ -32,7 +30,7 @@ Buses run their own dedicated lanes, so they can speed past gridlocked traffic. 
 
 Just this fall, the Philippine government has [begun planning](http://www.update.ph/2016/09/48-6-kilometer-brt-system-in-metro-manila-approved/9458) a bus-rapid transit system to complement the <span style="color: blue; font-weight: bold;">EDSA, a freeway that loops around the core of Manila as is heavily congested a peak hours</span>.
 
-<div class="marker" lat="14.5613" lng="121.0408" zoom="16" hour="20"></div>
+<div class="marker" lat="14.5613" lng="121.0408" zoom="14" hour="20"></div>
 
 <h4>Mapping movement and planning for the future with Open Traffic</h4>
 
