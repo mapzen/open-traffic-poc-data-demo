@@ -380,7 +380,7 @@
                                                             element: markers[i],
                                                             context: document.getElementById('sidebar-wrapper'),
                                                             handler: function(direction) {
-                                                                console.log(direction,this.element);
+                                                                if (direction == 'up') { return; }
 
                                                                 if (this.element.hasAttribute('lat')&&
                                                                     this.element.hasAttribute('lng')&&
