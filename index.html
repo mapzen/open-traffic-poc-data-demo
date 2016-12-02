@@ -378,6 +378,7 @@
                         for (var i = 0; i < markers.length; i++ ) {
                             waypoints.push(new Waypoint({
                                                             element: markers[i],
+                                                            context: document.getElementById('sidebar-wrapper'),
                                                             handler: function(direction) {
                                                                 console.log(direction,this.element);
 
