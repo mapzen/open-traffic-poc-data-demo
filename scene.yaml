@@ -6,8 +6,11 @@ import:
 
 sources:
     opentraffic:
-        type: GeoJSON
-        url: data/opentraffic.json
+        # type: MVT
+        # url: data/opentraffic.mbtiles
+        type: MVT
+        url: data/opentraffic/{z}/{x}/{y}.pbf
+        max_zoom: 14
 
 textures:
     opentraffic_lut:
