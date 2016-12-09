@@ -91,6 +91,7 @@ styles:
                     vec2 st = v_texcoord.xy+vec2(.5,0.);
                     st.y -= u_time*10.*data_now.r;
 
-                    float p = floor(st.y);
-                    p = step(.1+data_now_interpolated.g*.9, (random(p*.000001)+random(p))*.5 );
-                    color.a *= aastep(zoom(),fract(st.y+abs(st.x*.5-.5))) * (1.-p);
+                    //float p = floor(st.y);
+                    //p = step(.1+data_now_interpolated.g*.9, (random(p*.000001)+random(p))*.5 );
+                    //color.a *= aastep(zoom(),fract(st.y+abs(st.x*.5-.5))) * (1.-p);
+                    color.a *= aastep(zoom(),fract(st.y+abs(st.x*.5-.5)));
