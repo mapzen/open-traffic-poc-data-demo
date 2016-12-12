@@ -55,6 +55,7 @@ min_speed = 1000
 max_speed = 0
 min_observations = 1000
 max_observations = 0
+total_observations = 0
 min_deviation = 1000
 max_deviation = 0
 
@@ -92,6 +93,7 @@ with open(IN_CSV, 'rb') as csv_file:
             max_observations = observations
         elif observations < min_observations:
             min_observations = observations
+        total_observations += observations
 
         deviation = float(row['Standard Deviation'])
         if deviation > max_deviation:
@@ -107,7 +109,7 @@ with open(IN_CSV, 'rb') as csv_file:
 # Report
 print len(samples),"total samples"
 print "The range of speed goes from ", min_speed, 'to', max_speed
-print "The range of observations goes from ", min_observations, 'to', max_observations
+print "The range of observations goes from ", min_observations, 'to', max_observations, '(total of', total_observations, ')'
 print "The range of deviation goes from ", min_deviation, 'to', max_deviation
 
 # Housekeep the indices list
