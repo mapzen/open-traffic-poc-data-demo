@@ -17,7 +17,7 @@ textures:
         url: data/opentraffic.png
         filtering: nearest
     palette:
-        url: palette.png
+        url: palette-01.png
 
 layers:
     opentraffic:
