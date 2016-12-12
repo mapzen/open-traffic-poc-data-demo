@@ -348,6 +348,24 @@
                     scene.styles.opentraffic.shaders.uniforms.u_param = [this.width,this.height];
                 };
                 downloadingImage.src = 'data/opentraffic.png'
+
+                window.requestAnimationFrame(update);
+            }
+
+            function update() {
+                if (!pause) {
+                    if (typeof time === 'string') {
+                        time = parseFloat(time);
+                    }
+                    time += .005;
+                    if (time > hours.length) {
+                        time = 0;
+                    }
+                    if (window.timeSlider) {
+                        window.timeSlider.noUiSlider.set(time);
+                    }
+                }
+                window.requestAnimationFrame(update);
             }
 
             function formatTime(values, showDate) {
