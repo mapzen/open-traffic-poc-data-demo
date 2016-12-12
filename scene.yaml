@@ -88,7 +88,7 @@ styles:
 
                     //color.rgb = mix(vec3(1.000,0.068,0.378), vec3(0.000,1.000,0.818), smoothstep(0.,.3,data_now_interpolated.r) );
                     color = texture2D(u_palette, vec2(smoothstep(0.,.3,data_now_interpolated.r),.5));
-                    color.rgb = mix(vec3(0.5),color.rgb,.1+pow(data_now_interpolated.g*5.,0.2));
+                    color.rgb = mix(vec3(0.5),color.rgb,.1+pow(data_now_interpolated.g*5.,0.3));
                     //color.rgb = mix(vec3(0.5),color.rgb, data_now_interpolated.g*10.);
 
                     vec2 st = v_texcoord.xy+vec2(.5,0.);
