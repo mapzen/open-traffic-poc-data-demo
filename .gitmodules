@@ -1,6 +1,6 @@
 [submodule "blocks"]
 	path = blocks
-	url = git@github.com:tangrams/blocks.git
+	url = https://github.com/tangrams/blocks.git
 [submodule "zinc-style"]
 	path = zinc-style
-	url = git@github.com:tangrams/zinc-style.git
+	url = https://github.com/tangrams/zinc-style.git
