@@ -1,8 +1,8 @@
 import:
-    - https://tangrams.github.io/zinc-style/zinc-style.yaml
-    - https://tangrams.github.io/blocks/functions/zoom.yaml
-    - https://tangrams.github.io/blocks/functions/aastep.yaml
-    - https://tangrams.github.io/blocks/generative/random.yaml
+    - ../zinc-style/zinc-style.yaml
+    - ../blocks/functions/zoom.yaml
+    - ../blocks/functions/aastep.yaml
+    - ../blocks/generative/random.yaml
 
 sources:
     opentraffic:
