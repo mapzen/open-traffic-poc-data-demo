@@ -27,6 +27,8 @@
             <script src="lib/bootstrap.min.js"></script>
             <!-- Marked: markdown parser -->
             <script src="lib/marked.js" type="text/javascript"></script>
+            <!-- Marked: fetch parser -->
+            <script src="lib/featch.js" type="text/javascript"></script>
             <!-- waypoints -->
             <script src="lib/noframework.waypoints.min.js"></script>
 
@@ -233,7 +235,11 @@
                     var ctx = test_canvas.getContext('webgl') || test_canvas.getContext('experimental-webgl');
                 }
                 catch (e) {
-                    console.log(e);
+                    window.alert("This page requires a browser that supports WebGL.");
+                    return;
+                }
+
+                if (!window.WebGLRenderingContext) {
                     window.alert("This page requires a browser that supports WebGL.");
                     return;
                 }
@@ -298,7 +304,7 @@
                     window.alert("This page requires a browser that supports WebGL.");
                     return;
                 }
-                    
+
                 // Make TimeLine
                 fetch('data/hours.json')
                     .then(function (response) {
