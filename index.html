@@ -227,11 +227,13 @@
             var pause = false;
 
             var map = (function () {
+
                 try {
                     var test_canvas = document.createElement('canvas');
                     var ctx = test_canvas.getContext('webgl') || test_canvas.getContext('experimental-webgl');
                 }
                 catch (e) {
+                    console.log(e);
                     window.alert("This page requires a browser that supports WebGL.");
                     return;
                 }
@@ -292,6 +294,11 @@
             }());
 
             function init() {
+                if (!window.scene.gl) {
+                    window.alert("This page requires a browser that supports WebGL.");
+                    return;
+                }
+                    
                 // Make TimeLine
                 fetch('data/hours.json')
                     .then(function (response) {
