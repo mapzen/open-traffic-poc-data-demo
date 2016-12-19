@@ -227,7 +227,14 @@
             var pause = false;
 
             var map = (function () {
-                'use strict';
+                try {
+                    var test_canvas = document.createElement('canvas');
+                    var ctx = test_canvas.getContext('webgl') || test_canvas.getContext('experimental-webgl');
+                }
+                catch (e) {
+                    window.alert("This page requires a browser that supports WebGL.");
+                    return;
+                }
 
                 var map_start_location = [14.5997,121.1258, 11];
                 /*** URL parsing ***/
