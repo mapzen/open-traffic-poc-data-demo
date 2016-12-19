@@ -1,8 +1,8 @@
 import:
-    - ../zinc-style/zinc-style.yaml
-    - ../blocks/functions/zoom.yaml
-    - ../blocks/functions/aastep.yaml
-    - ../blocks/generative/random.yaml
+    - zinc-style/zinc-style.yaml
+    - blocks/functions/zoom.yaml
+    - blocks/functions/aastep.yaml
+    - blocks/generative/random.yaml
 
 sources:
     opentraffic:
