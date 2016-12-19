@@ -1,6 +1,6 @@
 <h5 style="color: #d4645c">A day on the roads of Manila</h5>
 
-**Mapzen is joining Open Traffic**, a global initiative led by the World Bank to measure urban traffic congestion. The Open Traffic platform collects anonymous location information from smartphones and converts this raw data into real-time and historical transportation statistics. Mapzen is leading development of the platform, and a wide-range of transportation providers are agreeing to contribute anonymized and aggregated data. To learn more, <a href="TODO" target="_blank">read the World Bank's press release</a>.
+**Mapzen is joining Open Traffic**, a global initiative led by the World Bank to measure urban traffic congestion. The Open Traffic platform collects anonymous location information from smartphones and converts this raw data into real-time and historical transportation statistics. Mapzen is leading development of the platform, and a wide-range of transportation providers are agreeing to contribute anonymized and aggregated data. To learn more, <a href="http://www.worldbank.org/en/news/press-release/2016/12/19/the-world-bank-launches-new-open-transport-partnership-to-improve-transportation-through-open-data" target="_blank">read the World Bank's press release</a>.
 
 **This map demonstrates the potential of Open Traffic**. It's based on 11,078,169 measurements of ride-share vehicle positions that have been anonymized, aggregated, and summarized to capture the ebb and flow of traffic throughout Manila. (Manila, the capital of the Philippines, is the most dense city in the world!)
 
