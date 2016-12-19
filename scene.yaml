@@ -6,8 +6,6 @@ import:
 
 sources:
     opentraffic:
-        # type: MVT
-        # url: data/opentraffic.mbtiles
         type: MVT
         url: data/opentraffic/{z}/{x}/{y}.pbf
         max_zoom: 14
