@@ -235,12 +235,12 @@
                     var ctx = test_canvas.getContext('webgl') || test_canvas.getContext('experimental-webgl');
                 }
                 catch (e) {
-                    window.alert("This page requires a browser that supports WebGL.");
+                    window.alert("To view this map, please use a web browser that supports WebGL graphics: Microsoft Edge, Google Chrome, Mozilla Firefox, or Apple Safari.");
                     return;
                 }
 
                 if (!window.WebGLRenderingContext) {
-                    window.alert("This page requires a browser that supports WebGL.");
+                    window.alert("To view this map, please use a web browser that supports WebGL graphics: Microsoft Edge, Google Chrome, Mozilla Firefox, or Apple Safari.");
                     return;
                 }
 
