@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <title>A day on the roads of Manila, as captured from thousands of rideshare trips by Open Traffic and Mapzen Tangram</title>
+        <!-- 3rd party libraries -->
+            <!-- Leaflet -->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.1/leaflet.css" />
+            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.1/leaflet.js"></script>
+            <!-- bog-standard leaflet URL hash -->
+            <script type="text/javascript" src="https://cdn.rawgit.com/mlevans/leaflet-hash/master/leaflet-hash.js"></script>
+            <!-- Main tangram library -->
+            <script src="https://mapzen.com/tangram/0.11/tangram.debug.js"></script>
+            <!-- wNumb -->
+            <script src="lib/wNumb.js"></script>
+            <!-- noUIslider -->
+            <link href="lib/noUiSlider/nouislider.min.css" rel="stylesheet">
+            <script src="lib/noUiSlider/nouislider.min.js"></script>
+            <!-- Jura Fonts -->
+            <link href='https://fonts.googleapis.com/css?family=Jura:400,300,600,500&subset=latin,cyrillic-ext,greek,latin-ext,cyrillic' rel='stylesheet' type='text/css'>
+           <!-- jQuery -->
+            <script src="lib/jquery.js"></script>
+            <!-- Bootstrap -->
+            <link rel="stylesheet" href="https://mapzen.com/common/styleguide/styles/styleguide.css">
+            <script src="lib/bootstrap.min.js"></script>
+            <!-- Marked: markdown parser -->
+            <script src="lib/marked.js" type="text/javascript"></script>
+            <!-- Marked: fetch parser -->
+            <script src="lib/fetch.js" type="text/javascript"></script>
+            <!-- waypoints -->
+            <script src="lib/noframework.waypoints.min.js"></script>
+
+        <!-- End of 3rd party libraries -->
+
+        <style>
+            body {
+                margin: 0px;
+                border: 0px;
+                padding: 0px;
+            }
+
+            #wrapper {
+                margin: 0px;
+                border: 0px;
+                padding: 0px;
+                -webkit-transition: all 0.5s ease;
+                -moz-transition: all 0.5s ease;
+                -o-transition: all 0.5s ease;
+                transition: all 0.5s ease;
+                width: 100%;
+                height: 100%;
+            }
+
+            #wrapper.toggled {
+                padding-rigth: 500px;
+                -webkit-transition: all 0.5s ease;
+                -moz-transition: all 0.5s ease;
+                -o-transition: all 0.5s ease;
+                transition: all 0.5s ease;
+            }
+
+            #menu-toggle {
+                position: absolute;
+                z-index: 10000;
+                right: 0px;
+                top: 80px;
+                border-radius: 0px;
+                color: black;
+                background-color: rgba(255,255,255,1.0);
+                border-color: white;
+                border-width: 0px
+            }
+
+            #sidebar-wrapper {
+                z-index: 1000;
+                position: absolute;
+                right: -500px;
+                top: 80px;
+                bottom: 120px;
+                width: 500px;
+                /*overflow-y: auto;*/
+                background: rgba(255,255,255,1.0);
+                -webkit-transition: all 0.5s ease;
+                -moz-transition: all 0.5s ease;
+                -o-transition: all 0.5s ease;
+                transition: all 0.5s ease;
+                padding: 10px;
+                overflow-y: auto;
+            }
+
+            #wrapper.toggled #sidebar-wrapper {
+                width: 500px;
+                right: 0px;
+            }
+
+            #wrapper.toggled #menu-toggle {
+                right: 500px;
+                -webkit-transition: all 0.5s ease;
+                -moz-transition: all 0.5s ease;
+                -o-transition: all 0.5s ease;
+                transition: all 0.5s ease;
+            }
+
+            #sidebar-wrapper img {
+                max-width: 100%;
+                height: auto;
+                border: solid 2px rgb(102,102,102);
+            }
+
+            #page-content-wrapper {
+                width: 100%;
+                height: 100%;
+                position: fixed;
+                padding: 15px;
+            }
+
+            #wrapper.toggled #page-content-wrapper {
+                margin-right: -500px;
+            }
+
+            @media(min-width:768px) {
+                #wrapper {
+                    padding-rigth: 500px;
+                }
+
+                #wrapper.toggled {
+                    padding-rigth: 0;
+                }
+
+                #sidebar-wrapper {
+                    width: 500px;
+                }
+
+                #wrapper.toggled #sidebar-wrapper {
+                    right: 0px;
+                }
+
+                #page-content-wrapper {
+                    padding: 0px;
+                }
+
+                #wrapper.toggled #page-content-wrapper {
+                    margin-right: 0;
+                }
+            }
+
+            #map {
+                background: rgba(0, 0, 0, 0);
+                height: 100%;
+                width: 100%;
+                position: absolute;
+            }
+
+            #time {
+                position: absolute;
+                width: 90%;
+                bottom: 60px;
+                left: 50%;
+                transform: translate(-50%,0);
+                z-index: 1000;
+                height: 5px;
+            }
+
+            .noUi-handle.noUi-handle-lower{
+               top: -13px;
+            }
+
+            #date {
+                font-family: 'Jura', Helvetica, Arial, sans-serif;
+                color: white;
+                font-size: 24px;
+                position: absolute;
+                top: -55px;
+                left: 0px;
+                z-index: 1;
+                background-color: rgba(0,0,0,0.25);
+                padding: 10px;
+            }
+
+            .noUi-pips {
+                font-family: 'Jura', Helvetica, Arial, sans-serif;
+                color: white;
+                background-color: rgba(0,0,0,.25);
+                padding: 10px;
+            }
+
+            .noUi-state-tap {
+                transition-duration: 10s;
+            }
+/*
+            .noUi-state-tap .noUi-connect,
+            .noUi-state-tap .noUi-origin {
+                -webkit-transition: top 0.5s, right 0.5s, bottom 0.5s, left 0.5s;
+                transition: top 0.5s, right 0.5s, bottom 0.5s, left 0.5s;
+            }*/
+
+/*            #story {
+                font-size: 14px; 
+                font-weight: 200;
+                display: block;
+                margin: auto;
+                white-space: normal;
+                text-align: justify;
+                line-height: 170%;
+            }*/
+
+        </style>
+    </head>
+    <body>
+        <div id="wrapper" class="toggled">
+            <div id="page-content-wrapper">
+                <a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><span class="fa fa-bars" aria-hidden="true"></span></a>
+                <div id="map"></div>
+                <div id="time">
+                    <!-- <div id="date"></div> -->
+                </div>
+                
+            </div>
+            <div id="sidebar-wrapper">
+            </div>
+        </div>
+
+        <!-- Demo module -->
+        <script type="text/javascript">
+            var hours = [];
+            var time = 6.;
+            var pause = false;
+
+            var map = (function () {
+
+                try {
+                    var test_canvas = document.createElement('canvas');
+                    var ctx = test_canvas.getContext('webgl') || test_canvas.getContext('experimental-webgl');
+                }
+                catch (e) {
+                    window.alert("To view this map, please use a web browser that supports WebGL graphics: Microsoft Edge, Google Chrome, Mozilla Firefox, or Apple Safari.");
+                    return;
+                }
+
+                // if (!window.WebGLRenderingContext) {
+                //     window.alert("To view this map, please use a web browser that supports WebGL graphics: Microsoft Edge, Google Chrome, Mozilla Firefox, or Apple Safari.");
+                //     return;
+                // }
+
+                var map_start_location = [14.5997,121.1258, 11];
+                /*** URL parsing ***/
+
+                // leaflet-style URL hash pattern:
+                // ?style.yaml#[zoom],[lat],[lng]
+                var url_hash = window.location.hash.slice(1).split('/');
+                if (url_hash.length == 3) {
+                    map_start_location = [url_hash[1],url_hash[2], url_hash[0]];
+                    // convert from strings
+                    map_start_location = map_start_location.map(Number);
+                }
+
+                /*** Map ***/
+                var map = L.map('map', {
+                    maxZoom: 20,
+                    trackResize: true,
+                    keyboard: false
+                });
+                // L.control.geocoder('mapzen-YoRQaZF',{pointIcon: false, markers: false}).addTo(map);
+
+                var layer = Tangram.leafletLayer({
+                    scene: 'scene.yaml',
+                    introspection: true,
+                    attribution: '&copy; OSM contributors'
+                });
+
+                window.layer = layer;
+                var scene = layer.scene;
+                window.scene = scene;
+
+                map.setView(map_start_location.slice(0, 2), map_start_location[2]);
+                var hash = new L.Hash(map);
+
+                // Resize map to window
+                function resizeMap() {
+                    document.getElementById('map').style.width = window.innerWidth + 'px';
+                    document.getElementById('map').style.height = window.innerHeight + 'px';
+                    map.invalidateSize(false);
+                }
+
+                window.addEventListener('resize', resizeMap);
+                resizeMap();
+
+                window.addEventListener('load', function () {
+                    // Adding Tangram Layer to map
+                    layer.addTo(map);
+
+                    setTimeout(init, 2000);
+
+                    loadStory ('./story.md');
+                });
+
+                return map;
+            }());
+
+            function init() {
+                if (!window.scene.gl) {
+                    window.alert("This page requires a browser that supports WebGL.");
+                    return;
+                }
+
+                // Make TimeLine
+                fetch('data/hours.json')
+                    .then(function (response) {
+                        // If we get a positive response...
+                        if (response.status !== 200) {
+                            console.log('Error getting data. Status code: ' + response.status);
+                            return;
+                        }
+                        // ... parse it to JSON
+                        return response.json();
+                    })
+                    .then(function(json) {
+                        hours = json;
+
+                        var timeSlider = document.getElementById('time');
+                        // var dataLabel = document.getElementById('date');
+
+                        var slider = noUiSlider.create(timeSlider, {
+                            animate: true,
+                            // animationDuration: 30000,
+                            start: 0,
+                            step: 0.04,
+                            range: {
+                                    'min': 0,
+                                    'max': hours.length-1
+                                },
+                            pips: {
+                                mode: 'positions',
+                                values: [1.443333333*3, 1.443333333*9, 1.443333333*15, 1.443333333*21, 1.443333333*27,
+                                        1.443333333*33, 1.443333333*39, 1.443333333*45, 1.443333333*51, 1.443333333*57,
+                                        1.443333333*63],
+                                density: 1,
+                                format: wNumb({
+                                        decimals: 0,
+                                        edit: function ( value ) {
+                                            return formatTime(value);
+                                        }
+                                })
+                            }
+                        });
+                        window.timeSlider = timeSlider;
+
+                        timeSlider.noUiSlider.on('update', function( values, handle ) {
+                            var t = parseFloat(values);
+                            scene.styles.opentraffic.shaders.uniforms.u_offset = t;
+                            // dataLabel.innerHTML = formatTime(values, true);
+                        });
+
+                        timeSlider.noUiSlider.on('start', function() {
+                            pause = true;
+                        });
+                        timeSlider.noUiSlider.on('end', function() {
+                            time = parseFloat(timeSlider.noUiSlider.get());
+                            pause = false;
+                        });
+                    })
+
+                // Load the image with the data
+                var downloadingImage = new Image();
+                downloadingImage.onload = function(){
+                    scene.styles.opentraffic.shaders.uniforms.u_param = [this.width,this.height];
+                };
+                downloadingImage.src = 'data/opentraffic.png'
+
+                window.requestAnimationFrame(update);
+            }
+
+            function update() {
+                if (!pause) {
+                    if (typeof time === 'string') {
+                        time = parseFloat(time);
+                    }
+                    time += .005;
+                    if (time > hours.length) {
+                        time = 0;
+                    }
+                    if (window.timeSlider) {
+                        window.timeSlider.noUiSlider.set(time);
+                    }
+                }
+                window.requestAnimationFrame(update);
+            }
+
+            function formatTime(values, showDate) {
+                var date = hours[Math.floor(values)].split('-');
+                var time = date[3]+'hs';
+                if (showDate) {
+                    time = date[1]+'/'+date[2]+'/'+date[0]+' '+time;
+                }
+                return time;  
+            }
+
+            var waypoints = []
+            function loadStory (url) {
+                // Make the request and wait for the reply
+                fetch(url)
+                    .then(function (response) {
+                        // If we get a positive response...
+                        if (response.status !== 200) {
+                            console.log('Error getting shader. Status code: ' + response.status);
+                            return;
+                        }
+                        // console.log(response);
+                        return response.text();
+                    })
+                    .then(function(content) {
+                        document.getElementById('sidebar-wrapper').innerHTML = marked(content);
+                        var markers = document.getElementsByClassName('marker');
+                        for (var i = 0; i < markers.length; i++ ) {
+                            waypoints.push(new Waypoint({
+                                                            element: markers[i],
+                                                            context: document.getElementById('sidebar-wrapper'),
+                                                            handler: function(direction) {
+                                                                if (direction == 'up') { return; }
+
+                                                                if (this.element.hasAttribute('lat')&&
+                                                                    this.element.hasAttribute('lng')&&
+                                                                    this.element.hasAttribute('zoom')) {
+                                                                    var options = { animate: true, duration: 1., easeLinearity: 1};
+
+                                                                    if (this.element.hasAttribute('duration')) {
+                                                                        options.duration = parseFloat(this.element.getAttribute('duration'));
+                                                                        //console.log(options);
+                                                                    }
+                                                                    var lat = parseFloat(this.element.getAttribute('lat'));
+                                                                    var lng = parseFloat(this.element.getAttribute('lng'));
+                                                                    var zoom = parseFloat(this.element.getAttribute('zoom'));
+                                                                    map.flyTo({lon: lng, lat: lat},zoom,options);
+                                                                }
+                                                                if (window.timeSlider && window.timeSlider.noUiSlider && this.element.hasAttribute('hour')) {
+                                                                    var hour = (parseFloat(this.element.getAttribute('hour')) - 1 )% 24;
+                                                                    window.timeSlider.noUiSlider.set(hour)
+                                                                }
+                                                            },
+                                                            offset: '100%'
+                                                        }));
+                        }
+                        window.waypoints = waypoints;
+                    })
+            }
+        </script>
+
+        <!-- Adding a script block to post message to the parent container (think iframed demos) -->
+        <script type="text/javascript">
+            $("#menu-toggle").click(function(e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+            });
+            window.addEventListener("hashchange",function(){parent.postMessage(window.location.hash, "*")});
+        </script>
+        <!-- Mapzen bug & search bar -->
+        <script src='https://mapzen.com/common/ui/mapzen-ui.min.js'></script>
+        <script>
+            MPZN.bug({
+                name: 'Tangram',
+                tweet: "A day on the roads of Manila, as captured from thousands of rideshare trips by Open Traffic and Mapzen Tangram",
+                repo: 'https://github.com/mapzen/open-traffic-poc-data-demo',
+                search: false,
+                locate: false
+            });
+        </script>
+    </body>
+</html>
