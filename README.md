@@ -9,7 +9,7 @@
 3. Open [`script/process_export.py`](script/process_export.py) and edit `EXTRACT_NAME` value
 4. Run [`script/process_export.py`](script/process_export.py)
 
-This scrip generates a ([`data/opentraffic.png`](data/opentraffic.png)) and GeoJSON ([`data/opentraffic.json`](data/opentraffic.json)). The GeoJSON contain the geometry (A `FeatureColection` of `LineString`) which `propertie.id` match the pixel row of the PNG image.
+This script generates a ([`data/opentraffic.png`](data/opentraffic.png)) and GeoJSON ([`data/opentraffic.json`](data/opentraffic.json)). The GeoJSON contain the geometry (A `FeatureColection` of `LineString`) which `propertie.id` match the pixel row of the PNG image.
 
 Because there is a lot of geometries in Manila (arround `38563`), I wrapp them in columns.
 
