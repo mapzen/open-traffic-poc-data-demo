@@ -9,7 +9,7 @@
 3. Open [`script/process_export.py`](script/process_export.py) and edit `EXTRACT_NAME` value
 4. Run [`script/process_export.py`](script/process_export.py)
 
-This scrip generates a ([`data/opentraffic.png`](data/opentraffic.png)) and GeoJSON ([`data/opentraffic.json`](data/opentraffic.json)). The GeoJSON contain the geometry (A `FeatureColection` of `LineString`) which `propertie.id` match the pixel row of the PNG image.
+This script generates a ([`data/opentraffic.png`](data/opentraffic.png)) and GeoJSON ([`data/opentraffic.json`](data/opentraffic.json)). The GeoJSON contain the geometry (A `FeatureColection` of `LineString`) which `propertie.id` match the pixel row of the PNG image.
 
 Because there is a lot of geometries in Manila (arround `38563`), I wrapp them in columns.
 
@@ -18,12 +18,12 @@ Because there is a lot of geometries in Manila (arround `38563`), I wrapp them i
 
 #### Notes
 
-- 1.a CSV files handles time in an awekard way
+- 1.a CSV files handles time in an awkward way
 
 `Edge Id,Date Start,Date End,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday,Time Start,Time End,...`
 `1000001163,05/25/2015,10/02/2016,1,0,0,0,0,0,0,10:00,010:59`
 
-To have a consisten timestamp I'm taking the `Date Start` and offset it by that day of the week 
+To have a consistent timestamp I'm taking the `Date Start` and offset it by that day of the week 
 
 ```python
     # Calculate the timestamp from the "Date Start" ...
@@ -33,13 +33,13 @@ To have a consisten timestamp I'm taking the `Date Start` and offset it by that 
     timestamp = timestamp + relativedelta(days=time_offset)
 ```
 
-In this case the week start on a `Wednesday` so I'm adjusting the offsets for the days manualy... wich is not a great solution.
+In this case the week start on a `Wednesday` so I'm adjusting the offsets for the days manualy... which is not a great solution.
 
 - 1.b Sometimes `Time Start` and `Time End` have weird values
 For example: `...,010:59,...` or `...,0-1:00,...`.
 On first case: I take out the extra `0`
-For the second case: seams that the export don't have a `23:00` sample... so I asume that goes from `23:00` of the previous day.
-I work arround this by doing:
+For the second case: seems that the export don't have a `23:00` sample... so I assume that goes from `23:00` of the previous day.
+I work around this by doing:
 
 ```python
     time = row[10].split(':')
@@ -48,9 +48,9 @@ I work arround this by doing:
     timestamp = datetime.strptime(row[1]+' '+str(1+int(time[0]))+':'+str(1+int(time[1])),'%m/%d/%Y %H:%M')
 ```
 
-### 2. Imporving delivery
+### 2. Improving delivery
 
-The big GeoJSON takes a long time to load. It's possible to condense all the data into a `.mbtile` using [tippercanoe](https://github.com/mapbox/tippecanoe#line-and-polygon-simplification) and then exported in indivual tiles thanks to this script https://github.com/iandees/mbtiles2dir by @iandees (Ian Dees). Once both are installed do:
+The big GeoJSON takes a long time to load. It's possible to condense all the data into a `.mbtile` using [tippercanoe](https://github.com/mapbox/tippecanoe#line-and-polygon-simplification) and then export in indivual tiles thanks to this script https://github.com/iandees/mbtiles2dir by @iandees (Ian Dees). Once both are installed do:
 
 ```bash
 tippecanoe -S 10 -o opentraffic.mbtiles opentraffic.json
@@ -61,7 +61,7 @@ find . -type f -exec mv '{}' '{}'.pbf \;
 
 ### 3. Visualizing the data in tangram
 
-I'm loading both the PNG image ([`data/opentraffic.png`](data/opentraffic.png)) and GeoJSON ([`data/opentraffic.json`](data/opentraffic.json)) to the Tangram YAML scene file [`scene.yaml`](scene.yaml), where I colorize each segment of the geometry acording to the geometry ID (that match the row on the image)
+I'm loading both the PNG image ([`data/opentraffic.png`](data/opentraffic.png)) and GeoJSON ([`data/opentraffic.json`](data/opentraffic.json)) to the Tangram YAML scene file [`scene.yaml`](scene.yaml), where I colorize each segment of the geometry according to the geometry ID (that match the row on the image)
 
 ```yaml
 layers:
